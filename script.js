@@ -16,7 +16,10 @@ sounds.forEach((sound)=>{
 	let btn = document.createElement('button');
 	btn.classList.add('btn');
 	btn.textContent = sound;
-  const audio = new Audio(`sounds/${sound}.mp3`);
+  const audio = document.createElement('audio');
+
+	audio.src = `sounds/${sound}.mp3`;
+	
   audioElements[sound] = audio;
 	btn.addEventListener('click',()=>{
 		stopSongs();
