@@ -1,4 +1,5 @@
 //your JS code here. If required.
+
 let divBtns = document.querySelector('#buttons');
 
 const sounds = [
@@ -10,26 +11,40 @@ const sounds = [
   "wrong"
 ];
 
-const audioElements  ={};
+const audioElements = {};
 
-sounds.forEach((sound)=>{
+sounds.forEach((sound) => {
+
 	let btn = document.createElement('button');
+
 	btn.classList.add('btn');
+
 	btn.textContent = sound;
-  const audio = document.createElement('audio');
+
+	const audio = document.createElement('audio');
 
 	audio.src = `sounds/${sound}.mp3`;
-	
-  audioElements[sound] = audio;
-	btn.addEventListener('click',()=>{
+
+	document.body.appendChild(audio);
+
+	audioElements[sound] = audio;
+
+	btn.addEventListener('click', () => {
+
 		stopSongs();
+
 		audio.play();
+
 	});
+
 	divBtns.append(btn);
-})
+
+});
 
 let stopBtn = document.createElement('button');
+
 stopBtn.classList.add('stop');
+
 stopBtn.textContent = 'stop';
 
 stopBtn.addEventListener('click', stopSongs);
@@ -38,20 +53,12 @@ divBtns.append(stopBtn);
 
 function stopSongs() {
 
-  Object.values(audioElements).forEach((audio) => {
-    audio.pause();
-    audio.currentTime = 0;
+	Object.values(audioElements).forEach((audio) => {
 
-  });
+		audio.pause();
+
+		audio.currentTime = 0;
+
+	});
 
 }
-	
-
-
-
-
-
-
-
-
-
